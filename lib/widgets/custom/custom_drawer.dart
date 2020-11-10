@@ -10,6 +10,7 @@ class CustomDrawer extends StatelessWidget {
     @required this.onItemSelected,
     this.selectedStyle,
     this.style,
+    this.selectedBackgroundColor = Colors.white,
   }) : super(key: key);
 
   final List<String> titles;
@@ -17,6 +18,7 @@ class CustomDrawer extends StatelessWidget {
   final TextStyle selectedStyle;
   final TextStyle style;
   final Function(int) onItemSelected;
+  final Color selectedBackgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +34,13 @@ class CustomDrawer extends StatelessWidget {
   List<Widget> _buildButtons() {
     List<Widget> buttons = [];
     for (var i = 0; i < titles.length; i++) {
+      final isSelected = i == selectedIndex;
       final Widget button = ListTile(
+        tileColor: isSelected ? selectedBackgroundColor : Colors.transparent,
         title: LinkButton(
           onTap: () => onItemSelected(i),
           title: titles[i],
-          style: i == selectedIndex ? selectedStyle : style,
+          style: isSelected ? selectedStyle : style,
         ),
       );
       buttons.add(button);

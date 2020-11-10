@@ -112,6 +112,7 @@ class Home extends StatelessWidget {
         selectedStyle: theme.textTheme.headline3.copyWith(
           fontWeight: FontWeight.w500,
         ),
+        selectedBackgroundColor: theme.backgroundColor,
       ),
     );
   }
