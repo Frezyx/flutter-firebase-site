@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter Firebase Site',
       debugShowCheckedModeBanner: false,
       theme: appTheme,
       home: MultiProvider(providers: [
@@ -63,9 +63,7 @@ class Home extends StatelessWidget {
                       ),
                     ),
                     Expanded(
-                      child: Center(
-                        child: screens[navigationBloc.selectedIndex],
-                      ),
+                      child: screens[navigationBloc.selectedIndex],
                     ),
                   ],
                 ),
