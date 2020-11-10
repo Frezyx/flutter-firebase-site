@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 class Prices extends StatelessWidget {
   const Prices({
     Key key,
+    @required this.scaffoldKey,
   }) : super(key: key);
+
+  final GlobalKey scaffoldKey;
 
   @override
   Widget build(BuildContext context) {

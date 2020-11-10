@@ -5,6 +5,7 @@ final appTheme = ThemeData(
   primaryColor: Colors.yellow,
   backgroundColor: Color(0xFF151515),
   scaffoldBackgroundColor: Color(0xFF151515),
+  canvasColor: Colors.yellow,
   textTheme: TextTheme(
     headline1: TextStyle(
       fontSize: 92,

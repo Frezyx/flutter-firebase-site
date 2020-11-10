@@ -5,7 +5,10 @@ import 'package:flutter_firebase_site/widgets/responsive/responsive_view.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
     Key key,
+    @required this.scaffoldKey,
   }) : super(key: key);
+
+  final GlobalKey scaffoldKey;
 
   @override
   Widget build(BuildContext context) {

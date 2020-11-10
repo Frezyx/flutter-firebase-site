@@ -1,41 +1,37 @@
+import 'package:animated_icon_button/animated_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_site/widgets/responsive/responsive_view.dart';
 
 import 'href_button.dart';
 
-const _titles = [
-  'Home',
-  'About',
-  'Prices',
-  'Contacts',
-];
-
 class NavBar extends StatelessWidget {
   NavBar({
     Key key,
+    @required this.titles,
+    @required this.scaffoldKey,
     @required this.selectedIndex,
     @required this.onItemSelected,
     this.selectedStyle,
     this.style,
   }) : super(key: key);
 
+  final List<String> titles;
   final int selectedIndex;
   final TextStyle selectedStyle;
   final TextStyle style;
   final Function(int) onItemSelected;
+  final GlobalKey<ScaffoldState> scaffoldKey;
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    final theme = Theme.of(context);
     return ResponsiveView(
       largeScreen: _buildLargeView(),
       mediumScreen: _buildLargeView(),
-      smallScreen: _buildSmallScreen(size, theme),
+      smallScreen: _buildSmallScreen(context),
     );
   }
 
-  Widget _buildSmallScreen(Size size, ThemeData theme) {
+  Widget _buildSmallScreen(BuildContext context) {
     return Container(
       color: Colors.transparent,
       height: 65.0,
@@ -46,8 +42,8 @@ class NavBar extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            _buildBurger(context),
             Image.asset('assets/img/FlutterWeb.png', width: 160, height: 35),
-            _buildBurger(theme),
           ],
         ),
       ),
@@ -74,25 +70,30 @@ class NavBar extends StatelessWidget {
     );
   }
 
-  Widget _buildBurger(ThemeData theme) {
+  Widget _buildBurger(BuildContext context) {
+    final theme = Theme.of(context);
     return IconButton(
-      icon: Icon(Icons.menu),
-      onPressed: () => print("menu pressed"),
-      color: theme.accentColor,
       iconSize: 32,
       splashRadius: 1.0,
+      color: theme.accentColor,
       splashColor: Colors.transparent,
       focusColor: Colors.transparent,
       highlightColor: Colors.transparent,
+      onPressed: () => scaffoldKey.currentState.isDrawerOpen
+          ? Navigator.pop(context)
+          : scaffoldKey.currentState.openDrawer(),
+      icon: scaffoldKey.currentState.isDrawerOpen
+          ? Icon(Icons.close)
+          : Icon(Icons.menu),
     );
   }
 
   List<Widget> _buildButtons() {
     List<LinkButton> buttons = [];
-    for (var i = 0; i < _titles.length; i++) {
+    for (var i = 0; i < titles.length; i++) {
       final button = LinkButton(
         onTap: () => onItemSelected(i),
-        title: _titles[i],
+        title: titles[i],
         style: i == selectedIndex ? selectedStyle : style,
       );
       buttons.add(button);
