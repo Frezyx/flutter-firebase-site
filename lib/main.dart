@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_site/widgets/custom/custom_drawer.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_firebase_site/screens/home.dart';
 import 'package:flutter_firebase_site/widgets/nav_bar.dart';
@@ -8,6 +9,7 @@ import 'screens/about.dart';
 import 'screens/contacts.dart';
 import 'screens/prices.dart';
 import 'theme/theme.dart';
+import 'widgets/href_button.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter Firebase Site',
       debugShowCheckedModeBanner: false,
       theme: appTheme,
       home: MultiProvider(providers: [
@@ -27,21 +29,43 @@ class MyApp extends StatelessWidget {
   }
 }
 
+const _titles = [
+  'Home',
+  'About',
+  'Prices',
+  'Contacts',
+];
+
 class Home extends StatelessWidget {
   Home({Key key}) : super(key: key);
 
-  final Map<int, Widget> screens = {
-    0: HomeScreen(),
-    1: About(),
-    2: Prices(),
-    3: Contacts(),
-  };
+  Widget _buildScreen(
+    int index,
+    GlobalKey scaffoldKey,
+  ) {
+    switch (index) {
+      case 0:
+        return HomeScreen(scaffoldKey: scaffoldKey);
+        break;
+      case 1:
+        return About(scaffoldKey: scaffoldKey);
+        break;
+      case 2:
+        return Prices(scaffoldKey: scaffoldKey);
+        break;
+      default:
+        return Contacts(scaffoldKey: scaffoldKey);
+        break;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final navigationBloc = Provider.of<NavigationBloc>(context);
+    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
     return Scaffold(
+      key: _scaffoldKey,
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints viewportConstraints) {
           return SingleChildScrollView(
@@ -53,6 +77,8 @@ class Home extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     NavBar(
+                      titles: _titles,
+                      scaffoldKey: _scaffoldKey,
                       selectedIndex: navigationBloc.selectedIndex,
                       onItemSelected: (int index) =>
                           navigationBloc.selectedIndex = index,
@@ -63,8 +89,9 @@ class Home extends StatelessWidget {
                       ),
                     ),
                     Expanded(
-                      child: Center(
-                        child: screens[navigationBloc.selectedIndex],
+                      child: _buildScreen(
+                        navigationBloc.selectedIndex,
+                        _scaffoldKey,
                       ),
                     ),
                   ],
@@ -73,6 +100,19 @@ class Home extends StatelessWidget {
             ),
           );
         },
+      ),
+      drawer: CustomDrawer(
+        titles: _titles,
+        selectedIndex: navigationBloc.selectedIndex,
+        onItemSelected: (int index) => navigationBloc.selectedIndex = index,
+        style: theme.textTheme.headline3.copyWith(
+          color: Colors.black,
+          fontWeight: FontWeight.w400,
+        ),
+        selectedStyle: theme.textTheme.headline3.copyWith(
+          fontWeight: FontWeight.w500,
+        ),
+        selectedBackgroundColor: theme.backgroundColor,
       ),
     );
   }
