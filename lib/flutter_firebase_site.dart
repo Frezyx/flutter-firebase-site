@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_firebase_site/screens/home.dart';
 import 'package:flutter_firebase_site/widgets/nav_bar.dart';
 
-import 'blocs/navigation_bloc.dart';
+import 'providers/navigation_provider.dart';
 import 'screens/about.dart';
 import 'screens/contacts.dart';
 import 'screens/prices.dart';
@@ -18,7 +18,8 @@ class FlutterFirebaseSite extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: appTheme,
       home: MultiProvider(providers: [
-        ChangeNotifierProvider<NavigationBloc>(create: (_) => NavigationBloc()),
+        ChangeNotifierProvider<NavigationProvider>(
+            create: (_) => NavigationProvider()),
       ], builder: (ctx, w) => Home()),
     );
   }
@@ -57,7 +58,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final navigationBloc = Provider.of<NavigationBloc>(context);
+    final navigationProvider = Provider.of<NavigationProvider>(context);
     final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
     return Scaffold(
       key: _scaffoldKey,
@@ -74,9 +75,9 @@ class Home extends StatelessWidget {
                     NavBar(
                       titles: _titles,
                       scaffoldKey: _scaffoldKey,
-                      selectedIndex: navigationBloc.selectedIndex,
+                      selectedIndex: navigationProvider.selectedIndex,
                       onItemSelected: (int index) =>
-                          navigationBloc.selectedIndex = index,
+                          navigationProvider.selectedIndex = index,
                       style: theme.textTheme.headline3,
                       selectedStyle: theme.textTheme.headline3.copyWith(
                         color: theme.accentColor,
@@ -85,7 +86,7 @@ class Home extends StatelessWidget {
                     ),
                     Expanded(
                       child: _buildScreen(
-                        navigationBloc.selectedIndex,
+                        navigationProvider.selectedIndex,
                         _scaffoldKey,
                       ),
                     ),
@@ -98,8 +99,8 @@ class Home extends StatelessWidget {
       ),
       drawer: CustomDrawer(
         titles: _titles,
-        selectedIndex: navigationBloc.selectedIndex,
-        onItemSelected: (int index) => navigationBloc.selectedIndex = index,
+        selectedIndex: navigationProvider.selectedIndex,
+        onItemSelected: (int index) => navigationProvider.selectedIndex = index,
         style: theme.textTheme.headline3.copyWith(
           color: Colors.black,
           fontWeight: FontWeight.w400,
