@@ -5,19 +5,19 @@ import 'href_button.dart';
 
 class NavBar extends StatelessWidget {
   NavBar({
-    Key key,
-    @required this.titles,
-    @required this.scaffoldKey,
-    @required this.selectedIndex,
-    @required this.onItemSelected,
+    Key? key,
+    required this.titles,
+    required this.scaffoldKey,
+    required this.selectedIndex,
+    required this.onItemSelected,
     this.selectedStyle,
     this.style,
   }) : super(key: key);
 
   final List<String> titles;
   final int selectedIndex;
-  final TextStyle selectedStyle;
-  final TextStyle style;
+  final TextStyle? selectedStyle;
+  final TextStyle? style;
   final Function(int) onItemSelected;
   final GlobalKey<ScaffoldState> scaffoldKey;
 
@@ -78,10 +78,10 @@ class NavBar extends StatelessWidget {
       splashColor: Colors.transparent,
       focusColor: Colors.transparent,
       highlightColor: Colors.transparent,
-      onPressed: () => scaffoldKey.currentState.isDrawerOpen
+      onPressed: () => scaffoldKey.currentState!.isDrawerOpen
           ? Navigator.pop(context)
-          : scaffoldKey.currentState.openDrawer(),
-      icon: scaffoldKey.currentState.isDrawerOpen
+          : scaffoldKey.currentState!.openDrawer(),
+      icon: scaffoldKey.currentState!.isDrawerOpen
           ? Icon(Icons.close)
           : Icon(Icons.menu),
     );

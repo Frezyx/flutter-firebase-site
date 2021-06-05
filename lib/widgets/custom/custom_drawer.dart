@@ -4,10 +4,10 @@ import '../href_button.dart';
 
 class CustomDrawer extends StatelessWidget {
   CustomDrawer({
-    Key key,
-    @required this.titles,
-    @required this.selectedIndex,
-    @required this.onItemSelected,
+    Key? key,
+    required this.titles,
+    required this.selectedIndex,
+    required this.onItemSelected,
     this.selectedStyle,
     this.style,
     this.selectedBackgroundColor = Colors.white,
@@ -15,8 +15,8 @@ class CustomDrawer extends StatelessWidget {
 
   final List<String> titles;
   final int selectedIndex;
-  final TextStyle selectedStyle;
-  final TextStyle style;
+  final TextStyle? selectedStyle;
+  final TextStyle? style;
   final Function(int) onItemSelected;
   final Color selectedBackgroundColor;
 

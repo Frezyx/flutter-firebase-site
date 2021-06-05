@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-
-import '../../utils/responsive/responsive_helper.dart';
+import 'package:flutter_firebase_site/theme/responsive/responsive_helper.dart';
 
 class ResponsiveView extends StatelessWidget {
   final Widget largeScreen;
-  final Widget mediumScreen;
-  final Widget smallScreen;
+  final Widget? mediumScreen;
+  final Widget? smallScreen;
 
   const ResponsiveView(
-      {Key key,
-      @required this.largeScreen,
+      {Key? key,
+      required this.largeScreen,
       this.mediumScreen,
       this.smallScreen})
       : super(key: key);
