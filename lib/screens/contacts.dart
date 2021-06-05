@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class Contacts extends StatelessWidget {
   const Contacts({
-    Key key,
-    @required this.scaffoldKey,
+    Key? key,
+    required this.scaffoldKey,
   }) : super(key: key);
 
   final GlobalKey scaffoldKey;

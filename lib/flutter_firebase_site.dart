@@ -33,7 +33,7 @@ const _titles = [
 ];
 
 class Home extends StatelessWidget {
-  Home({Key key}) : super(key: key);
+  Home({Key? key}) : super(key: key);
 
   Widget _buildScreen(
     int index,
@@ -79,7 +79,7 @@ class Home extends StatelessWidget {
                       onItemSelected: (int index) =>
                           navigationProvider.selectedIndex = index,
                       style: theme.textTheme.headline3,
-                      selectedStyle: theme.textTheme.headline3.copyWith(
+                      selectedStyle: theme.textTheme.headline3!.copyWith(
                         color: theme.accentColor,
                         fontWeight: FontWeight.w600,
                       ),
@@ -101,11 +101,11 @@ class Home extends StatelessWidget {
         titles: _titles,
         selectedIndex: navigationProvider.selectedIndex,
         onItemSelected: (int index) => navigationProvider.selectedIndex = index,
-        style: theme.textTheme.headline3.copyWith(
+        style: theme.textTheme.headline3!.copyWith(
           color: Colors.black,
           fontWeight: FontWeight.w400,
         ),
-        selectedStyle: theme.textTheme.headline3.copyWith(
+        selectedStyle: theme.textTheme.headline3!.copyWith(
           fontWeight: FontWeight.w500,
         ),
         selectedBackgroundColor: theme.backgroundColor,
