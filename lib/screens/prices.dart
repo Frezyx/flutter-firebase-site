@@ -11,9 +11,11 @@ class Prices extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Text(
-      "Prices",
-      style: theme.textTheme.headline1,
+    return Center(
+      child: Text(
+        "Prices",
+        style: theme.textTheme.headline1,
+      ),
     );
   }
 }

@@ -11,9 +11,11 @@ class About extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Text(
-      "About",
-      style: theme.textTheme.headline1,
+    return Center(
+      child: Text(
+        "About",
+        style: theme.textTheme.headline1,
+      ),
     );
   }
 }

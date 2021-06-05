@@ -11,9 +11,11 @@ class Contacts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Text(
-      "Contacts",
-      style: theme.textTheme.headline1,
+    return Center(
+      child: Text(
+        "Contacts",
+        style: theme.textTheme.headline1,
+      ),
     );
   }
 }

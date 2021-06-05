@@ -9,7 +9,6 @@ import 'screens/about.dart';
 import 'screens/contacts.dart';
 import 'screens/prices.dart';
 import 'theme/theme.dart';
-import 'widgets/href_button.dart';
 
 void main() {
   runApp(MyApp());
