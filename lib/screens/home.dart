@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_site/utils/responsive/responsive_helper.dart';
+import 'package:flutter_firebase_site/theme/responsive/responsive_helper.dart';
 import 'package:flutter_firebase_site/widgets/responsive/responsive_view.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -27,7 +27,7 @@ class HomeScreen extends StatelessWidget {
         child: Text(
           "SIMPLE FLUTTER WEB APP",
           style: theme.textTheme.headline1.copyWith(
-            fontSize: ResponsiveHelper.respWidthSize(context, 0.06),
+            fontSize: ResponsiveHelper.width(context, 0.06),
           ),
         ),
       ),
@@ -42,7 +42,7 @@ class HomeScreen extends StatelessWidget {
         child: Text(
           "SIMPLE FLUTTER WEB APP",
           style: theme.textTheme.headline1.copyWith(
-            fontSize: ResponsiveHelper.respWidthSize(context, 0.13),
+            fontSize: ResponsiveHelper.width(context, 0.13),
           ),
         ),
       ),

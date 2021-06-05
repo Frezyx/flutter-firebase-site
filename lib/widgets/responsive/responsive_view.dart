@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../utils/responsive/responsive_helper.dart';
+import 'package:flutter_firebase_site/theme/responsive/responsive_helper.dart';
 
 class ResponsiveView extends StatelessWidget {
   final Widget largeScreen;

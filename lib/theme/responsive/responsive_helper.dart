@@ -15,7 +15,7 @@ abstract class ResponsiveHelper {
   }
 
   /// [percent] mast be between [0,1]
-  static double respWidthSize(BuildContext context, double percent) {
+  static double width(BuildContext context, double percent) {
     return MediaQuery.of(context).size.width * percent;
   }
 }
