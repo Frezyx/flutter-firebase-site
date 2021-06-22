@@ -59,13 +59,12 @@ class Home extends StatelessWidget {
         selectedIndex: 0,
         onItemSelected: (int i) => print(i),
         style: theme.textTheme.headline3!.copyWith(
-          color: Colors.black,
           fontWeight: FontWeight.w400,
         ),
         selectedStyle: theme.textTheme.headline3!.copyWith(
           fontWeight: FontWeight.w500,
+          color: theme.primaryColor,
         ),
-        selectedBackgroundColor: theme.backgroundColor,
       ),
     );
   }

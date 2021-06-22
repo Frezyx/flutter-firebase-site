@@ -10,7 +10,7 @@ class CustomDrawer extends StatelessWidget {
     required this.onItemSelected,
     this.selectedStyle,
     this.style,
-    this.selectedBackgroundColor = Colors.white,
+    this.selectedBackgroundColor,
   }) : super(key: key);
 
   final List<String> titles;
@@ -18,7 +18,7 @@ class CustomDrawer extends StatelessWidget {
   final TextStyle? selectedStyle;
   final TextStyle? style;
   final Function(int) onItemSelected;
-  final Color selectedBackgroundColor;
+  final Color? selectedBackgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,7 @@ class CustomDrawer extends StatelessWidget {
     final theme = Theme.of(context);
     return DrawerHeader(
       decoration: BoxDecoration(
-        color: theme.backgroundColor,
+        color: theme.primaryColor,
       ),
       child: InkWell(
         onTap: () => onItemSelected(0),
