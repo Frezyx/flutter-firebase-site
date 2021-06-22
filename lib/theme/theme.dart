@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 final appTheme = ThemeData(
-  primarySwatch: Colors.yellow,
-  primaryColor: Colors.yellow,
-  backgroundColor: Color(0xFF151515),
-  scaffoldBackgroundColor: Color(0xFF151515),
-  canvasColor: Colors.yellow,
+  primarySwatch: Colors.orange,
+  primaryColor: Colors.orange,
+  backgroundColor: Colors.white,
+  scaffoldBackgroundColor: Colors.white,
   textTheme: TextTheme(
     headline1: TextStyle(
       fontSize: 92,
