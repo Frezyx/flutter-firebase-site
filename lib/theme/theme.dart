@@ -8,12 +8,12 @@ final appTheme = ThemeData(
   textTheme: TextTheme(
     headline1: TextStyle(
       fontSize: 92,
-      color: Colors.white,
+      color: Colors.black,
       fontWeight: FontWeight.w900,
     ),
     headline3: TextStyle(
       fontSize: 18,
-      color: Colors.white,
+      color: Colors.black,
       fontWeight: FontWeight.w300,
     ),
   ),
