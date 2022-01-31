@@ -13,12 +13,10 @@ class LinkButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Container(
-      child: FlatButton(
+      child: TextButton(
         onPressed: onTap,
-        focusColor: theme.accentColor,
-        child: Text(title, style: style,),
+        child: Text(title, style: style),
       ),
     );
   }

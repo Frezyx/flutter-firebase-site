@@ -38,7 +38,7 @@ class Home extends StatelessWidget {
                       },
                       style: theme.textTheme.headline3,
                       selectedStyle: theme.textTheme.headline3!.copyWith(
-                        color: theme.accentColor,
+                        color: theme.primaryColor,
                         fontWeight: FontWeight.w600,
                       ),
                     ),

@@ -74,7 +74,7 @@ class NavBar extends StatelessWidget {
     return IconButton(
       iconSize: 32,
       splashRadius: 1.0,
-      color: theme.accentColor,
+      color: theme.primaryColor,
       splashColor: Colors.transparent,
       focusColor: Colors.transparent,
       highlightColor: Colors.transparent,
