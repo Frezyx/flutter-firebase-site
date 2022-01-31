@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_site/ui/ui.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 class FlutterFirebaseSite extends StatefulWidget {
   FlutterFirebaseSite({Key? key}) : super(key: key);
@@ -16,6 +17,7 @@ class _FlutterFirebaseSiteState extends State<FlutterFirebaseSite> {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Flutter Firebase Site',
+      theme: ThemesLibrary.lightTheme,
       routerDelegate: AutoRouterDelegate(
         widget._appRouter,
         navigatorObservers: () => [
@@ -24,7 +26,16 @@ class _FlutterFirebaseSiteState extends State<FlutterFirebaseSite> {
       ),
       routeInformationParser: widget._appRouter.defaultRouteParser(),
       builder: (_, router) {
-        return router!;
+        return ResponsiveWrapper.builder(
+          router,
+          minWidth: 480,
+          defaultScale: true,
+          breakpoints: const [
+            ResponsiveBreakpoint.resize(480, name: MOBILE),
+            ResponsiveBreakpoint.autoScale(800, name: TABLET),
+            ResponsiveBreakpoint.resize(1000, name: DESKTOP),
+          ],
+        );
       },
     );
   }

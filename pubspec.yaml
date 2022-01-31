@@ -26,8 +26,8 @@ dependencies:
   cupertino_icons: ^1.0.4
   auto_route: ^3.2.2
   lint: ^1.8.2
-
   talker: ^0.6.0
+  responsive_framework: ^0.1.5
 
 dev_dependencies:
   flutter_test:
