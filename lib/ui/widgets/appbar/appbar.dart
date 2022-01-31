@@ -17,7 +17,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
             children: [
               const AppBarLogo(),
               const Spacer(flex: 6),
-              ResponsiveBuilder(
+              const ResponsiveBuilder(
                 largeScreen: const AppBarMenu(),
                 mediumScreen: AppBarMobileMenu(),
               ),

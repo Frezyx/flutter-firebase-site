@@ -8,6 +8,7 @@ class AppBarMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Row(
       children: [
         Row(
@@ -15,18 +16,26 @@ class AppBarMenu extends StatelessWidget {
             BaseTextButton(
               title: 'Home',
               onPressed: () {},
+              textColor: ThemeDefaults.baseText,
+              hoverColor: theme.primaryColor,
             ),
             BaseTextButton(
-              title: 'Home',
+              title: 'Cases',
               onPressed: () {},
+              textColor: ThemeDefaults.baseText,
+              hoverColor: theme.primaryColor,
             ),
             BaseTextButton(
-              title: 'Home',
+              title: 'Price',
               onPressed: () {},
+              textColor: ThemeDefaults.baseText,
+              hoverColor: theme.primaryColor,
             ),
             BaseTextButton(
-              title: 'Home',
+              title: 'Partners',
               onPressed: () {},
+              textColor: ThemeDefaults.baseText,
+              hoverColor: theme.primaryColor,
             ),
           ],
         ),

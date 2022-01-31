@@ -38,9 +38,9 @@ class _MenuState extends State<Menu> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     BaseTextButton(title: 'Home', onPressed: () {}),
-                    BaseTextButton(title: 'Home', onPressed: () {}),
-                    BaseTextButton(title: 'Home', onPressed: () {}),
-                    BaseTextButton(title: 'Home', onPressed: () {}),
+                    BaseTextButton(title: 'Cases', onPressed: () {}),
+                    BaseTextButton(title: 'Price', onPressed: () {}),
+                    BaseTextButton(title: 'Partners', onPressed: () {}),
                   ],
                 ),
               ),
