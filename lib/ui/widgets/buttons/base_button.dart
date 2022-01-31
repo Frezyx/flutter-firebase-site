@@ -45,7 +45,7 @@ class Button extends StatelessWidget {
       elevation: MaterialStateProperty.all(0),
       shape: MaterialStateProperty.all(
         RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8.0),
+          borderRadius: BorderRadius.circular(8),
         ),
       ),
     );
