@@ -1,15 +1,31 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_site/widgets/home.dart';
-import 'theme/theme.dart';
+import 'package:flutter_firebase_site/ui/ui.dart';
 
-class FlutterFirebaseSite extends StatelessWidget {
+class FlutterFirebaseSite extends StatefulWidget {
+  FlutterFirebaseSite({Key? key}) : super(key: key);
+
+  final _appRouter = AppRouter();
+
+  @override
+  State<FlutterFirebaseSite> createState() => _FlutterFirebaseSiteState();
+}
+
+class _FlutterFirebaseSiteState extends State<FlutterFirebaseSite> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Firebase Site',
-      debugShowCheckedModeBanner: false,
-      theme: appTheme,
-      home: Home(),
+      routerDelegate: AutoRouterDelegate(
+        widget._appRouter,
+        navigatorObservers: () => [
+          AutoRouteObserver(),
+        ],
+      ),
+      routeInformationParser: widget._appRouter.defaultRouteParser(),
+      builder: (_, router) {
+        return router!;
+      },
     );
   }
 }

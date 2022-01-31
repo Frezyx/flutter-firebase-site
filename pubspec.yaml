@@ -25,10 +25,15 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.4
   auto_route: ^3.2.2
+  lint: ^1.8.2
+
+  talker: ^0.6.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  auto_route_generator: ^3.2.1
+  build_runner: any 
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -42,8 +47,7 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  assets:
-    - assets/img/FlutterWeb.png
+  # assets:
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
