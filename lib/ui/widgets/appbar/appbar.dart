@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_site/ui/ui.dart';
+import 'package:flutter_firebase_site/ui/widgets/responsive/responsive.dart';
 
 class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
   const BaseAppBar({Key? key}) : super(key: key);
@@ -14,10 +15,16 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const AppBarLogo(),
-              const Spacer(),
-              const AppBarMenu(),
-              const Spacer(),
-              const AppBarActions(),
+              const Spacer(flex: 6),
+              ResponsiveBuilder(
+                largeScreen: const AppBarMenu(),
+                mediumScreen: AppBarMobileMenu(),
+              ),
+              const SizedBox(width: 10),
+              const ResponsiveBuilder(
+                largeScreen: AppBarActions(),
+                smallScreen: SizedBox(),
+              ),
             ],
           ),
         ),
@@ -28,6 +35,22 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize => const Size.fromHeight(70);
+}
+
+class AppBarMobileMenu extends StatelessWidget {
+  const AppBarMobileMenu({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return IconButton(
+      onPressed: () {},
+      icon: const Icon(Icons.menu),
+      color: theme.primaryColor,
+    );
+  }
 }
 
 class AppBarActions extends StatelessWidget {
