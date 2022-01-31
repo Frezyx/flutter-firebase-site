@@ -7,12 +7,16 @@ class BaseTextButton extends StatefulWidget {
     required this.onPressed,
     this.hoverColor = Colors.white,
     this.textColor,
+    this.hoverTextStyle,
+    this.textStyle,
   }) : super(key: key);
 
   final Color hoverColor;
   final Color? textColor;
   final String title;
   final VoidCallback? onPressed;
+  final TextStyle? hoverTextStyle;
+  final TextStyle? textStyle;
 
   @override
   State<BaseTextButton> createState() => _BaseTextButtonState();
@@ -26,18 +30,25 @@ class _BaseTextButtonState extends State<BaseTextButton> {
     final theme = Theme.of(context);
     return TextButton(
       onPressed: widget.onPressed,
-      onHover: (val) => setState(() => _hovered = val),
+      onHover: (val) {
+        setState(() => _hovered = val);
+      },
       style: ButtonStyle(
         overlayColor: MaterialStateProperty.all(Colors.transparent),
       ),
       child: Text(
         widget.title,
-        style: TextStyle(
-          color: _hovered
-              ? widget.hoverColor
-              : widget.textColor ?? theme.primaryColor,
-        ),
+        style: _hovered
+            ? widget.hoverTextStyle ?? _getDefaultTextStyle(theme)
+            : widget.textStyle ?? _getDefaultTextStyle(theme),
       ),
+    );
+  }
+
+  TextStyle _getDefaultTextStyle(ThemeData theme) {
+    return TextStyle(
+      color:
+          _hovered ? widget.hoverColor : widget.textColor ?? theme.primaryColor,
     );
   }
 }

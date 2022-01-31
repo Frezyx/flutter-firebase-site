@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_site/ui/theme/theme_defaults.dart';
 import 'package:flutter_firebase_site/ui/widgets/buttons/text_button.dart';
 
 class Menu extends StatefulWidget {
@@ -15,6 +16,7 @@ class _MenuState extends State<Menu> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.only(top: 70.0),
       child: GestureDetector(
@@ -33,21 +35,73 @@ class _MenuState extends State<Menu> {
                   ),
                 ),
               ),
-              Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    BaseTextButton(title: 'Home', onPressed: () {}),
-                    BaseTextButton(title: 'Cases', onPressed: () {}),
-                    BaseTextButton(title: 'Price', onPressed: () {}),
-                    BaseTextButton(title: 'Partners', onPressed: () {}),
-                  ],
+              Material(
+                child: GestureDetector(
+                  onTap: () {},
+                  child: Center(
+                    child: Container(
+                      width: 300,
+                      height: 300,
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: theme.cardColor,
+                        borderRadius: BorderRadius.circular(25),
+                        boxShadow: ThemeDefaults.commonShadow,
+                      ),
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              BaseTextButton(
+                                title: 'Home',
+                                onPressed: () {},
+                                hoverTextStyle: _getPrimaryHomeStyle(theme),
+                              ),
+                              BaseTextButton(
+                                title: 'Cases',
+                                onPressed: () {},
+                                hoverTextStyle: _getPrimaryHomeStyle(theme),
+                              ),
+                              BaseTextButton(
+                                title: 'Price',
+                                onPressed: () {},
+                                hoverTextStyle: _getPrimaryHomeStyle(theme),
+                              ),
+                              BaseTextButton(
+                                title: 'Partners',
+                                onPressed: () {},
+                                hoverTextStyle: _getPrimaryHomeStyle(theme),
+                              ),
+                            ],
+                          ),
+                          Align(
+                            alignment: Alignment.topRight,
+                            child: InkWell(
+                              child: Icon(
+                                Icons.close_rounded,
+                              ),
+                              onTap: () => Navigator.pop(context),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  TextStyle _getPrimaryHomeStyle(ThemeData theme) {
+    return TextStyle(
+      fontSize: 28,
+      color: theme.primaryColor,
     );
   }
 }

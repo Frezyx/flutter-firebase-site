@@ -8,9 +8,8 @@ abstract class ThemesLibrary {
   static ThemeData get lightTheme => ThemeData(
         primaryColor: _primaryColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
-        buttonTheme: ButtonThemeData(
+        buttonTheme: const ButtonThemeData(
           buttonColor: _primaryColor,
-          textTheme: ButtonTextTheme.normal,
         ),
       );
 }
